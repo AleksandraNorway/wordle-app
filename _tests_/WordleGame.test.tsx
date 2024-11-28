@@ -8,20 +8,18 @@ describe("WordleGame Component", () => {
   });
 
   test("Letters in the correct position are highlighted green", async () => {
-    // Render the WordleGame component with a predefined correct word
+
     render(<WordleGame correctWord="water" />);
 
-    // Close the introduction modal
     const startGameButton = screen.getByRole("button", { name: /start game/i });
     await userEvent.click(startGameButton);
 
-    // Simulate typing the correct word
+
     await userEvent.keyboard("water{Enter}");
 
-    // Wait for the success message
+
     await screen.findByText(/congratulations/i);
 
-    // Verify each letter is highlighted green
     "water".split("").forEach((_, index) => {
       const letterBox = screen.getByTestId(`letter-0-${index}`);
       expect(letterBox).toHaveClass("bg-green-500");
@@ -55,12 +53,12 @@ describe("WordleGame Component", () => {
     expect(letterBox2).toHaveClass("bg-green-500 text-white");
     expect(letterBox2).toHaveTextContent("t");
   
-    // Index 3: 'e' should be green (correct position)
+ 
     const letterBox3 = screen.getByTestId("letter-0-3");
     expect(letterBox3).toHaveClass("bg-green-500 text-white");
     expect(letterBox3).toHaveTextContent("e");
   
-    // Index 4: 'r' should be green (correct position)
+
     const letterBox4 = screen.getByTestId("letter-0-4");
     expect(letterBox4).toHaveClass("bg-green-500 text-white");
     expect(letterBox4).toHaveTextContent("r");
