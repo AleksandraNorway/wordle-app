@@ -1,0 +1,8 @@
+{
+    "github.copilot.chat.scopeSelection": true,
+    "github.copilot.chat.inlineChatHint.enabled": true,
+    "github.copilot.chat.inlineChatCompletionTrigger.enabled": true,
+    "github.copilot.chat.generateTests.codeLens": true,
+    "github.copilot.chat.search.semanticTextResults": true,
+    "github.copilot.chat.temporalContext.enabled": true
+}
