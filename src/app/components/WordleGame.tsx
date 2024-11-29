@@ -124,7 +124,7 @@ const WordleGame: React.FC<WordleGameProps> = ({ correctWord }) => {
     }
   };
   
-  const getLetterClass = (letter: string, colIndex: number, rowIndex: number): string => {
+  const getLetterClass = (colIndex: number, rowIndex: number): string => {
     if (rowIndex >= guesses.length) return "bg-slate-100"; // Empty rows
     const assignedClass = colors[rowIndex][colIndex] || "bg-gray-400 text-black"; // Default to gray if no color assigned
     return assignedClass;
@@ -156,7 +156,6 @@ const WordleGame: React.FC<WordleGameProps> = ({ correctWord }) => {
                 key={colIndex}
                 data-testid={`letter-${rowIndex}-${colIndex}`} 
                 className={`w-12 h-12 flex border-2 border-slate-300 items-center justify-center text-lg font-bold rounded ${getLetterClass(
-                  letter,
                   colIndex,
                   rowIndex
                 )}`}
