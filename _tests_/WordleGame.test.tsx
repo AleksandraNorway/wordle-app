@@ -9,7 +9,7 @@ describe("WordleGame Component", () => {
 
   test("Letters in the correct position are highlighted green", async () => {
 
-    render(<WordleGame correctWord="water" />);
+    render(<WordleGame predefinedWord="water" />);
 
     const startGameButton = screen.getByRole("button", { name: /start game/i });
     await userEvent.click(startGameButton);
@@ -27,7 +27,7 @@ describe("WordleGame Component", () => {
   });
 
   test("Extra letters do not get yellow highlight", async () => {
-    render(<WordleGame correctWord="water" />);
+    render(<WordleGame predefinedWord="water" />);
   
  
     const startGameButton = screen.getByRole("button", { name: /start game/i });

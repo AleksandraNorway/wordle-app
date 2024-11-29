@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Keyboard from "./Keyboard";
 import IntroductionModal from "./IntroductionModal";
 import words from "./DbWords";
+
 const keyboardLayout = [
   ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
   ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
@@ -11,10 +12,10 @@ const keyboardLayout = [
 ];
 
 interface WordleGameProps {
-  correctWord: string;
+  predefinedWord: string;
 }
 
-const WordleGame: React.FC<WordleGameProps> = ({ correctWord }) => {
+const WordleGame: React.FC<WordleGameProps> = ({ predefinedWord }) => {
   const [guesses, setGuesses] = useState<string[]>([]);
   const [currentGuess, setCurrentGuess] = useState<string>("");
   const [keyColors, setKeyColors] = useState<Record<string, string>>({});
@@ -22,6 +23,7 @@ const WordleGame: React.FC<WordleGameProps> = ({ correctWord }) => {
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [colors, setColors] = useState<string[][]>([]);
   const [showIntroduction, setShowIntroduction] = useState<boolean>(true);
+  const [correctWord, setCorrectWord] = useState<string>(predefinedWord);
   const maxGuesses = 5;
 
   const handlePlayAgain = () => {
@@ -31,6 +33,7 @@ const WordleGame: React.FC<WordleGameProps> = ({ correctWord }) => {
     setMessage("");
     setIsCorrect(false);
     setColors([]);
+    setCorrectWord(words[Math.floor(Math.random() * words.length)]);
   };
 
   useEffect(() => {
